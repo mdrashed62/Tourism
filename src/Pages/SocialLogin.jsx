@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,16 +6,16 @@ const SocialLogin = () => {
   const { googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
- 
 
-  const handleSocialLogin = async (socialProvider) => {
-    try {
-      const result = await socialProvider();
-      console.log("Login successful:", result.user);
-      navigate(location?.state ? location.state : "/");
-    } catch (error) {
-      console.error("Social login error:", error);
-    }
+  const handleSocialLogin = (socialProvider) => {
+    socialProvider()
+      .then((result) => {
+        console.log("Login successful:", result.user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error("Social login error:", error);
+      });
   };
 
   return (

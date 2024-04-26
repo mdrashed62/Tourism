@@ -20,19 +20,30 @@ const Nav = () => {
         </li>
       )} */}
 
+      <li className="ml-2">
+        <NavLink to="/allTouristSpot">All Tourists Spot</NavLink>
+      </li>
+
+      {/* 
       {user && (
         <li className="mr-4 ml-4">
           <NavLink to="/userProfile">Profile</NavLink>
         </li>
-      )}
+      )} */}
 
+      <li className="mr-2 ml-2">
+        <NavLink to="/addTouristSpot">Add Tourists Spot</NavLink>
+      </li>
+
+      <li className="mr-2 ml-2">
+        <NavLink to="/myList">My List</NavLink>
+      </li>
     </>
   );
 
   return (
     <div
-      data-aos="fade-down"
-      data-aos-duration="1000"
+     
       className="navbar bg-base-100 max-w-6xl mx-auto "
     >
       <div className="navbar-start">
@@ -61,7 +72,7 @@ const Nav = () => {
           </ul>
         </div>
         <a className="btn btn-ghost  text-xl md:text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-cyan-500 to-blue-500">
-        Destination Fusion
+          Destination Fusion
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
