@@ -15,7 +15,7 @@ const Nav = () => {
       </li>
 
       <li className="ml-2">
-        <NavLink to="/allTouristSpot">Tourist Spots</NavLink>
+        <NavLink to="/allTouristSpot">All Tourist Spots</NavLink>
       </li>
 
      

@@ -8,6 +8,7 @@ import AllTouristSpot from "../Pages/AllTouristSpot";
 import MyList from "../Pages/MyList";
 import PrivateRoute from "../Components/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import SpotDetails from "../Pages/SpotDetails";
 
 
 const routes = createBrowserRouter([
@@ -31,7 +32,9 @@ const routes = createBrowserRouter([
             },
            {
             path: '/allTouristSpot',
-            element: <AllTouristSpot></AllTouristSpot>
+            element: <AllTouristSpot></AllTouristSpot>,
+            loader: () => fetch('http://localhost:5000/touristSpots')
+
            },
            {
             path: '/addTouristSpot',
@@ -41,6 +44,11 @@ const routes = createBrowserRouter([
             path: '/myList',
             element: <PrivateRoute><MyList></MyList></PrivateRoute>
            },
+           {
+            path: '/spotDetails/:id',
+            element: <SpotDetails></SpotDetails>,
+            loader: () => fetch('http://localhost:5000/touristSpots')
+           }
 
         ]
     }

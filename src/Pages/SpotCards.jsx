@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const SpotCards = ({ spot }) => {
-  console.log(spot);
   const {
     spotName,
     shortDescription,
     location,
     visitors,
     photo,
+    _id
   } = spot;
 
   const shortDescText = shortDescription
@@ -26,7 +27,7 @@ const SpotCards = ({ spot }) => {
           <p>{location}</p>
         </div>
 
-        <button className="btn w-full mt-4 bg-green-500">View Details</button>
+       <Link to={`/spotDetails/${_id}`}> <button className="btn w-full mt-4 bg-green-500">View Details</button></Link>
       </div>
     </div>
   );
@@ -39,6 +40,7 @@ SpotCards.propTypes = {
     location: PropTypes.string.isRequired,
     visitors: PropTypes.number,
     photo: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
   }).isRequired,
 };
 export default SpotCards;
