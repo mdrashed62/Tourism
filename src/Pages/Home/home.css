@@ -1,0 +1,33 @@
+.slide {
+    color: white;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.slide1 {
+    background-image: url(../../assets/photo3.jpg); 
+}
+
+.slide2 {
+    background-image: url(../../assets/photo2.jpg); 
+}
+
+.slide3 {
+    background-image: url(../../assets/photo4.jpg); 
+}
+.slide4 {
+    background-image: url(../../assets/photo1.jpg); 
+}
+.slide5 {
+    background-image: url(../../assets/photo5.jpg); 
+}
+
+.dropdown {
+    z-index: 10; 
+  }

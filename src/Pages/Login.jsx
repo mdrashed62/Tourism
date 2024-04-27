@@ -37,8 +37,8 @@ const Login = () => {
   };
 
   return (
-    <div data-aos='slide-right' data-aos-duration='2000'>
-      <div className="card shrink-0 w-full mb-4 max-w-sm shadow-2xl bg-base-100 mx-auto">
+    <div >
+      <div className="card shrink-0 w-full mb-4 max-w-sm shadow-xl bg-gray-300 border  mx-auto">
         <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">
             <label className="label">
@@ -67,7 +67,7 @@ const Login = () => {
         </div>
        </div>
           <div className="form-control mt-6">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn  rounded-lg bg-green-500">
               Login
             </button>
           </div>

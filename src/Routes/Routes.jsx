@@ -7,16 +7,19 @@ import AddTouristSpot from "../Pages/AddTouristSpot";
 import AllTouristSpot from "../Pages/AllTouristSpot";
 import MyList from "../Pages/MyList";
 import PrivateRoute from "../Components/PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 
 const routes = createBrowserRouter([
     {
         path:'/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/touristSpots')
             },
             {
                 path: '/login',

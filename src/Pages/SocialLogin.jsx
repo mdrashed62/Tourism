@@ -23,7 +23,7 @@ const SocialLogin = () => {
       <div>
         <button
           onClick={() => handleSocialLogin(googleLogin)}
-          className="btn btn-sm bg-pink-500"
+          className="btn px-4 lg:px-8 py-3 rounded-lg bg-blue-500"
         >
           Google
         </button>
@@ -31,7 +31,7 @@ const SocialLogin = () => {
       <div>
         <button
           onClick={() => handleSocialLogin(githubLogin)}
-          className="btn btn-sm bg-pink-500"
+          className="btn px-4 lg:px-8 py-3 rounded-lg bg-blue-500"
         >
           GitHub
         </button>

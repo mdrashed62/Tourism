@@ -14,23 +14,11 @@ const Nav = () => {
         <NavLink to="/">Home</NavLink>
       </li>
 
-      {/* {user && (
-        <li className="ml-3">
-          <NavLink to="/updateProfile">Update Profile</NavLink>
-        </li>
-      )} */}
-
       <li className="ml-2">
-        <NavLink to="/allTouristSpot">All Tourists Spot</NavLink>
+        <NavLink to="/allTouristSpot">Tourist Spots</NavLink>
       </li>
 
-      {/* 
-      {user && (
-        <li className="mr-4 ml-4">
-          <NavLink to="/userProfile">Profile</NavLink>
-        </li>
-      )} */}
-
+     
       <li className="mr-2 ml-2">
         <NavLink to="/addTouristSpot">Add Tourists Spot</NavLink>
       </li>
@@ -44,7 +32,7 @@ const Nav = () => {
   return (
     <div
      
-      className="navbar bg-base-100 max-w-6xl mx-auto "
+      className="navbar bg-base-100 max-w-6xl mx-auto mb-6 "
     >
       <div className="navbar-start">
         <div className="dropdown">
