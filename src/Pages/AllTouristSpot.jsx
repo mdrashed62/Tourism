@@ -1,6 +1,7 @@
 import  { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllCards from './AllCards';
+import { FaCaretDown } from "react-icons/fa";
 
 const AllTouristSpot = () => {
   const allTouristSpot = useLoaderData(); 
@@ -20,14 +21,14 @@ const AllTouristSpot = () => {
   const sortedTouristSpots = [...allTouristSpot].sort(sortByAverageCost); 
 
   return (
-    <div>
+    <div className='mb-6'>
       <h2 className="text-5xl text-center font-bold">All Tourist Spots</h2>
 
     
-      <div className="text-center mt-4 mb-4">
+      <div className="text-center mt-4 ">
         <div className="dropdown dropdown-bottom ">
           <div tabIndex={0} role="button" className="btn bg-emerald-400 m-1">
-            Average Cost
+            Average Cost <FaCaretDown />
           </div>
           <ul
             tabIndex={0}
