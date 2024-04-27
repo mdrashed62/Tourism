@@ -27,7 +27,9 @@ const SpotCards = ({ spot }) => {
           <p>{location}</p>
         </div>
 
-       <Link to={`/spotDetails/${_id}`}> <button className="btn w-full mt-4 bg-green-500">View Details</button></Link>
+       <div className="w-full ">
+       <Link to={`/spotDetails/${_id}`}> <button className="btn mt-4 md:20 lg:px-24 bg-green-500">View Details</button></Link>
+       </div>
       </div>
     </div>
   );
