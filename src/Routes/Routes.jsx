@@ -20,9 +20,7 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(
-            "https://tourist-server-ashy.vercel.app/touristSpots"
-          ),
+          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       {
         path: "/login",
@@ -36,9 +34,7 @@ const routes = createBrowserRouter([
         path: "/allTouristSpot",
         element: <AllTouristSpot></AllTouristSpot>,
         loader: () =>
-          fetch(
-            "https://tourist-server-ashy.vercel.app/touristSpots"
-          ),
+          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       {
         path: "/addTouristSpot",
@@ -55,14 +51,13 @@ const routes = createBrowserRouter([
             <MyList></MyList>
           </PrivateRoute>
         ),
+        loader: () => fetch('https://tourist-server-ashy.vercel.app/touristSpots')
       },
       {
         path: "/spotDetails/:id",
         element: <SpotDetails></SpotDetails>,
         loader: () =>
-          fetch(
-            "https://tourist-server-ashy.vercel.app/touristSpots"
-          ),
+          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
     ],
   },

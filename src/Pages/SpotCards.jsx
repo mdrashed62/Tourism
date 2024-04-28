@@ -40,7 +40,7 @@ SpotCards.propTypes = {
     spotName: PropTypes.string.isRequired,
     shortDescription: PropTypes.string,
     location: PropTypes.string.isRequired,
-    visitors: PropTypes.number,
+    visitors: PropTypes.string,
     photo: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
