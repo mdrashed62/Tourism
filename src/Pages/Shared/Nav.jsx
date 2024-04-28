@@ -1,9 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  //For theme
+  const [theme, setTheme] = useState("light")
+
+  const handleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  }
 
   const handleSignOut = () => {
     logOut().then().catch();
@@ -63,7 +72,7 @@ const Nav = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end flex">
-        <label className="flex cursor-pointer mr-4 gap-2">
+        <label onClick={handleTheme} className="flex cursor-pointer mr-4 gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -99,29 +108,35 @@ const Nav = () => {
         </label>
         <label className="mr-5">
           {user && (
-            <div
-              className="tooltip  tooltip-bottom"
-              data-tip={user?.displayName}
-            >
-              <img className="w-12 h-12 rounded-full" src={user?.photoURL} />
+            <div className="dropdown dropdown-hover">
+              <div tabIndex={0} role="button" className=" m-1">
+                <img className="w-12 h-12 rounded-full" src={user?.photoURL}/>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>{user?.displayName} </li>
+                <li className="mt-4">
+                  <button
+                    onClick={handleSignOut}
+                    className=" bg-gradient-to-r from-purple-500 to-pink-500  text-white "
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
             </div>
           )}
+       
         </label>
-        {user ? (
-          <button
-            onClick={handleSignOut}
-            className="btn bg-gradient-to-r from-cyan-500 to-blue-500  text-white "
-          >
-            LogOut
-          </button>
-        ) : (
-          <Link
-            to="/login"
-            className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold"
-          >
-            Login
-          </Link>
-        )}
+
+        <Link
+          to="/login"
+          className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold"
+        >
+          Login
+        </Link>
       </div>
     </div>
   );

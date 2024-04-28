@@ -31,9 +31,16 @@ const Login = () => {
       });
       navigate(location?.state? location.state: '/')
     })
-    .catch(error =>{
-      console.error(error)
-    })
+    .catch((error) => {
+      console.log(error)
+      Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Login Failed",
+          text: "Incorrect email or password. Please try again.",
+          showConfirmButton: true,
+      });
+  });
   };
 
   return (

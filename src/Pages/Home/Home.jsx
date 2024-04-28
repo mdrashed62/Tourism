@@ -13,7 +13,9 @@ import SpotCards from "../SpotCards";
 
 const Home = () => {
   const spots = useLoaderData();
-  
+  const firstSixSpots = spots.slice(0, 6);
+
+
   return (
     <div>
       <div>
@@ -62,11 +64,12 @@ const Home = () => {
           
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {
-              spots.map(spot => <SpotCards key={spot._id} spot={spot}></SpotCards>)
+              firstSixSpots.map(spot => <SpotCards key={spot._id} spot={spot}></SpotCards>)
             }
             </div>
           </div>
         </div>
+        <h3>hey</h3>
       </div>
     </div>
   );
