@@ -1,8 +1,16 @@
-# React + Vite
+# Destination Fusion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Comprehensive Travel Guides: 
+Explore detailed guides for each Southeast Asian country, covering popular tourist spots, local customs, cuisine, and travel tips to help you plan the perfect trip.
 
-Currently, two official plugins are available:
+2. Interactive Maps and Itineraries: 
+Find interactive maps to visualize your journey and customized itineraries that suit your interests, whether you're a beach lover, a history buff, or an adventure seeker.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. Exclusive Travel Deals and Packages: 
+Get access to exclusive travel deals, discounts, and packages designed to make your Southeast Asian adventure affordable and unforgettable.
+
+4. Traveler Stories and Reviews: 
+Read personal stories and reviews from fellow travelers who have explored the region, sharing their experiences, recommendations, and hidden gems.
+
+5. Travel Resources and Services: 
+Access a variety of travel resources, including visa information, transportation options, accommodation guides, and safety tips to ensure a smooth and enjoyable trip.
