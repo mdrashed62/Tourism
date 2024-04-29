@@ -1,76 +1,72 @@
-import { useContext } from "react";
 import Swal from "sweetalert2";
-import "sweetalert2/src/sweetalert2.scss";
-import { AuthContext } from "../Providers/AuthProvider";
 
-const AddTouristSpot = () => {
-  const {user} = useContext(AuthContext);
-  console.log('auth user', user.email);
-  
-  const handleAddSpot = (e) => {
-    e.preventDefault();
-    const form = e.target;
 
-    const spotName = form.spotName.value;
-    const countryName = form.countryName.value;
-    const shortDescription = form.shortDescription.value;
-    const location = form.location.value;
-    const averageCost = form.averageCost.value;
-    const travelTime = form.travelTime.value;
-    const visitors = form.visitors.value;
-    const userName = form.userName.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const seasonality = form.seasonality.value;
-    const userEmail = user?.email;
+const UpdateSpot = () => {
 
-    const addSpot = {
-      spotName,
-      countryName,
-      shortDescription,
-      location,
-      averageCost,
-      travelTime,
-      visitors,
-      userName,
-      photo,
-      email,
-      seasonality,
-      userEmail
-    };
 
-    console.log(addSpot);
-
-    fetch(
-      "https://tourist-server-ashy.vercel.app/touristSpots",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(addSpot),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "Your tourist spot has been added",
-            showConfirmButton: false,
-            timer: 2000,
+    const handleAddSpot = (e) => {
+        e.preventDefault();
+        const form = e.target;
+    
+        const spotName = form.spotName.value;
+        const countryName = form.countryName.value;
+        const shortDescription = form.shortDescription.value;
+        const location = form.location.value;
+        const averageCost = form.averageCost.value;
+        const travelTime = form.travelTime.value;
+        const visitors = form.visitors.value;
+        const userName = form.userName.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const seasonality = form.seasonality.value;
+        // const userEmail = user?.email;
+    
+        const addSpot = {
+          spotName,
+          countryName,
+          shortDescription,
+          location,
+          averageCost,
+          travelTime,
+          visitors,
+          userName,
+          photo,
+          email,
+          seasonality,
+        //   userEmail
+        };
+    
+        console.log(addSpot);
+    
+        fetch(
+          "https://tourist-server-ashy.vercel.app/touristSpots",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addSpot),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data) {
+              Swal.fire({
+                position: "top",
+                icon: "success",
+                title: "Your tourist spot has been added",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
           });
-        }
-      });
-    form.reset();
-  };
+        form.reset();
+      };
 
-  return (
-    <div className="max-w-6xl mx-auto bg-gray-300 mt-6 p-20 rounded-lg">
-      <h3 className="text-4xl font-bold text-center mb-6">Add Tourist Spot</h3>
-      <form onSubmit={handleAddSpot}>
+    return (
+        <div className="max-w-2xl mb-6 mx-auto">
+            <form onSubmit={handleAddSpot}>
         {/* from name and quantity row */}
         <div className="md:flex gap-4 mb-4">
           <div className="md:w-1/2">
@@ -177,35 +173,7 @@ const AddTouristSpot = () => {
           </div>
         </div>
 
-        {/* from supplier row */}
-        <div className="md:flex gap-4 mb-4">
-          <div className=" md:w-1/2">
-            <span className="label-text">User Name</span>
-
-            <input
-              type="text"
-              placeholder="User Name"
-              className="input input-bordered w-full"
-              name="userName"
-              // defaultValue={}
-              id=""
-            />
-          </div>
-
-          <div className="md:w-1/2">
-            <span className="label-text">User Email</span>
-
-            <input
-              type="email"
-              placeholder="User Email"
-              className="input input-bordered w-full"
-              name="email"
-              // defaultValue={}
-              id=""
-            />
-          </div>
-        </div>
-
+    
         {/* from photo url row */}
         <div className=" mb-4">
           <div className=" w-full">
@@ -224,12 +192,12 @@ const AddTouristSpot = () => {
 
         <input
           type="submit"
-          value="Add Spot"
-          className="btn btn-block bg-green-500"
+          value="Update"
+          className="btn btn-block bg-red-500"
         />
       </form>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default AddTouristSpot;
+export default UpdateSpot;

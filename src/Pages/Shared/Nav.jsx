@@ -1,44 +1,51 @@
-import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate()
 
-  //For theme
-  const [theme, setTheme] = useState("light")
+  // Theme state and handler
+  const [theme, setTheme] = useState("light");
 
   const handleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
-  }
+  };
 
   const handleSignOut = () => {
-    logOut().then().catch();
+    logOut()
+    .then(() => {
+      navigate("/");
+    })
+    
+    .catch();
   };
+
   const navLinks = (
     <>
-      <li>
+      <li className=''>
         <NavLink to="/">Home</NavLink>
       </li>
-
       <li className="ml-2">
         <NavLink to="/allTouristSpot">All Tourist Spots</NavLink>
       </li>
-
-      <li className="mr-2 ml-2">
+      <li className=" ml-2">
         <NavLink to="/addTouristSpot">Add Tourists Spot</NavLink>
       </li>
-
-      <li className="mr-2 ml-2">
+      <li className="ml-2">
         <NavLink to="/myList">My List</NavLink>
+      </li>
+      <li className="ml-2">
+        <NavLink to="/updateSpot">Update Spot</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-6xl mx-auto mb-6 ">
+    <div className="navbar bg-base-100 max-w-6xl mx-auto mb-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,7 +71,7 @@ const Nav = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost  text-xl md:text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-cyan-500 to-blue-500">
+        <a className="p-1 text-xl md:text-2xl lg:text-3xl rounded-lg font-semibold ">
           Destination Fusion
         </a>
       </div>
@@ -72,71 +79,44 @@ const Nav = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end flex">
-        <label onClick={handleTheme} className="flex cursor-pointer mr-4 gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="5" />
-            <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-          </svg>
-          <input
-            type="checkbox"
-            value="synthwave"
-            className="toggle theme-controller"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </label>
-        <label className="mr-5">
-          {user && (
-            <div className="dropdown dropdown-hover">
-              <div tabIndex={0} role="button" className=" m-1">
-                <img className="w-12 h-12 rounded-full" src={user?.photoURL}/>
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>{user?.displayName} </li>
-                <li className="mt-4">
-                  <button
-                    onClick={handleSignOut}
-                    className=" bg-gradient-to-r from-purple-500 to-pink-500  text-white "
-                  >
-                    LogOut
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
        
-        </label>
-
-        <Link
-          to="/login"
-          className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold"
-        >
-          Login
-        </Link>
+        {user ? (
+          <div className="dropdown dropdown-hover">
+            <div tabIndex={0} role="button" className="m-1">
+              <img
+                src={user.photoURL}
+                className="w-12 h-12 rounded-full"
+                alt="User Profile"
+              />
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>{user?.displayName}</li>
+              <li className="mt-4">
+                <button
+                  onClick={handleSignOut}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="btn bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold"
+          >
+            Login
+          </Link>
+        )}
+         <label onClick={handleTheme} className="flex  cursor-pointer ml-6 mr-4 gap-2">
+         
+         <input type="checkbox" className="toggle theme-controller" />
+        
+       </label>
       </div>
     </div>
   );

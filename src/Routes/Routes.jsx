@@ -9,6 +9,9 @@ import MyList from "../Pages/MyList";
 import PrivateRoute from "../Components/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
 import SpotDetails from "../Pages/SpotDetails";
+import UpdateSpot from "../Pages/UpdateSpot";
+// import SecondHome from "../Pages/NewCollection/SecondHome";
+
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +25,11 @@ const routes = createBrowserRouter([
         loader: () =>
           fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
+      // {
+      //   path:'/secondHome',
+      //   element: <SecondHome></SecondHome>,
+      //   loader: () => fetch("http://localhost:5000/countryData")
+      // },
       {
         path: "/login",
         element: <Login></Login>,
@@ -51,13 +59,21 @@ const routes = createBrowserRouter([
             <MyList></MyList>
           </PrivateRoute>
         ),
-        loader: () => fetch('https://tourist-server-ashy.vercel.app/touristSpots')
+        loader: () =>
+          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       {
         path: "/spotDetails/:id",
         element: <SpotDetails></SpotDetails>,
-        loader: () =>
-          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+      },
+      {
+        path: "/updateSpot",
+        element: (
+          <PrivateRoute>
+            <UpdateSpot></UpdateSpot>
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -6,14 +6,30 @@ import "swiper/css";
 import "swiper/css/bundle";
 import { useLoaderData } from "react-router-dom";
 import SpotCards from "../SpotCards";
-
-
+import { useEffect, useState } from "react";
+import CountryCard from "../CountryCard";
 
 
 
 const Home = () => {
+  const [countriesData, setCountriesData] = useState()
   const spots = useLoaderData();
   const firstSixSpots = spots.slice(0, 6);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/countryData');
+        const data = await response.json();
+        console.log(data) 
+        setCountriesData(data)
+      } catch (error) {
+        console.error('Error fetching data:', error); 
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
   return (
@@ -69,7 +85,12 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <h3>hey</h3>
+        <h1 className="text-5xl text-center font-semibold mb-4">More Spots With Countries</h1>
+          <div>
+            {
+              countriesData?.map(country => <CountryCard key={country._id} country={country}></CountryCard>)
+            }
+          </div>
       </div>
     </div>
   );

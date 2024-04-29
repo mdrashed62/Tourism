@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const AllCards = ({touristSpot}) => {
    
-    const { spotName, shortDescription, location, averageCost, travelTime, visitors,photo,          seasonality, _id } = touristSpot;
+    const { spotName, shortDescription, location, averageCost, travelTime, visitors, photo, seasonality, _id } = touristSpot;
 
 
     return (
