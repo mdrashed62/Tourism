@@ -4,9 +4,9 @@ import "sweetalert2/src/sweetalert2.scss";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const AddTouristSpot = () => {
-  const {user} = useContext(AuthContext);
-  console.log('auth user', user.email);
-  
+  const { user } = useContext(AuthContext);
+  console.log("auth user", user.email);
+
   const handleAddSpot = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,21 +36,18 @@ const AddTouristSpot = () => {
       photo,
       email,
       seasonality,
-      userEmail
+      userEmail,
     };
 
     console.log(addSpot);
 
-    fetch(
-      "https://tourist-server-ashy.vercel.app/touristSpots",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(addSpot),
-      }
-    )
+    fetch("https://tourist-server-ashy.vercel.app/touristSpots", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addSpot),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -87,14 +84,15 @@ const AddTouristSpot = () => {
           </div>
           <div className="md:w-1/2">
             <span className="label-text">Country Name</span>
-            <input
-              type="text"
-              placeholder="Country Name"
-              className="input input-bordered w-full"
-              name="countryName"
-              // defaultValue={}
-              id=""
-            />
+            <select className="input input-bordered w-full" name="countryName">
+              <option value="">Select a Country</option>
+              <option value="USA">Bangladesh</option>
+              <option value="Canada">Thailand</option>
+              <option value="Mexico">Indonesia</option>
+              <option value="UK">Malaysia</option>
+              <option value="France">Vietnam</option>
+              <option value="Germany">Cambodia</option>
+            </select>
           </div>
         </div>
         {/* from supplier row */}

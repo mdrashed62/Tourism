@@ -12,7 +12,6 @@ import SpotDetails from "../Pages/SpotDetails";
 import UpdateSpot from "../Pages/UpdateSpot";
 // import SecondHome from "../Pages/NewCollection/SecondHome";
 
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -22,8 +21,7 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       // {
       //   path:'/secondHome',
@@ -41,8 +39,7 @@ const routes = createBrowserRouter([
       {
         path: "/allTouristSpot",
         element: <AllTouristSpot></AllTouristSpot>,
-        loader: () =>
-          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       {
         path: "/addTouristSpot",
@@ -59,8 +56,7 @@ const routes = createBrowserRouter([
             <MyList></MyList>
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
       },
       {
         path: "/spotDetails/:id",

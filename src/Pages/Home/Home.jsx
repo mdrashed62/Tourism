@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/countryData');
+        const response = await fetch('https://tourist-server-ashy.vercel.app/countryData');
         const data = await response.json();
         console.log(data) 
         setCountriesData(data)
@@ -70,7 +70,7 @@ const Home = () => {
               data-aos-duration="2000"
               className="text-2xl md:text-4xl lg:text-6xl font-bold mt-8 mb-4"
             >
-              Explore Our more Collection <br /> of beautiful Tourist Spot
+              Explore Our Collection <br /> of beautiful Tourist Spot
             </h3>
             <p data-aos="fade-up" data-aos-duration="3000">
             Embark on a journey through our extensive collection of breathtaking tourist spots. From serene beaches to majestic mountains, <br />  we offer a diverse selection of destinations to satisfy every travelers wanderlust. Discover the beauty <br />  of the world  and create unforgettable memories at each unique location
@@ -86,11 +86,39 @@ const Home = () => {
           </div>
         </div>
         <h1 className="text-5xl text-center font-semibold mb-4">More Spots With Countries</h1>
-          <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto mb-6">
             {
               countriesData?.map(country => <CountryCard key={country._id} country={country}></CountryCard>)
             }
           </div>
+      </div>
+      <div>
+
+      </div>
+      <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl font-semibold text-center">Cultural Festivals and Traditions</h2>
+            <div>
+              <ul>
+                <li><h2 className="text-2xl font-semibold">Major Festivals:</h2></li>
+                <p>Describe key cultural festivals in each country. For example, Songkran in Thailand, Tết in Vietnam, Hari Raya in Malaysia, or Thaipusam in Singapore. Include information on dates, significance, and traditional activities.</p>
+              </ul>
+              <ul>
+                <li><h2 className="text-2xl font-semibold">Major Festivals:</h2></li>
+                <p>Describe key cultural festivals in each country. For example, Songkran in Thailand, Tết in Vietnam, Hari Raya in Malaysia, or Thaipusam in Singapore. Include information on dates, significance, and traditional activities.</p>
+              </ul>
+              <ul>
+                <li><h2 className="text-2xl font-semibold">Major Festivals:</h2></li>
+                <p>Describe key cultural festivals in each country. For example, Songkran in Thailand, Tết in Vietnam, Hari Raya in Malaysia, or Thaipusam in Singapore. Include information on dates, significance, and traditional activities.</p>
+              </ul>
+              <ul>
+                <li><h2 className="text-2xl font-semibold">Major Festivals:</h2></li>
+                <p>Describe key cultural festivals in each country. For example, Songkran in Thailand, Tết in Vietnam, Hari Raya in Malaysia, or Thaipusam in Singapore. Include information on dates, significance, and traditional activities.</p>
+              </ul>
+              <ul>
+                <li><h2 className="text-2xl font-semibold">Major Festivals:</h2></li>
+                <p>Describe key cultural festivals in each country. For example, Songkran in Thailand, Tết in Vietnam, Hari Raya in Malaysia, or Thaipusam in Singapore. Include information on dates, significance, and traditional activities.</p>
+              </ul>
+            </div>
       </div>
     </div>
   );
