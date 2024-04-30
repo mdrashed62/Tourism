@@ -1,77 +1,81 @@
-
 // import PropTypes from "prop-types";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const UpdateSpot = () => {
-const newSpots = useLoaderData();
-console.log('why', newSpots)
-if (!newSpots) {
-    return <div>Loading...</div>; 
+  const newSpots = useLoaderData();
+  console.log("why", newSpots);
+  if (!newSpots) {
+    return <div>Loading...</div>;
   }
 
+  const {
+    _id,
+    spotName,
+    countryName,
+    shortDescription,
+    location,
+    averageCost,
+    travelTime,
+    photo,
+    seasonality,
+    visitors,
+  } = newSpots;
 
-  const  {_id, spotName, countryName,shortDescription,location,averageCost,travelTime,
-    photo, seasonality, visitors} = newSpots;
+  const handleUpdateSpot = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-    const handleUpdateSpot = (e) => {
-        e.preventDefault();
-        const form = e.target;
-    
-        const spotName = form.spotName.value;
-        const countryName = form.countryName.value;
-        const shortDescription = form.shortDescription.value;
-        const location = form.location.value;
-        const averageCost = form.averageCost.value;
-        const travelTime = form.travelTime.value;
-        const visitors = form.visitors.value;
-        const photo = form.photo.value;
-        const seasonality = form.seasonality.value;
-      
-    
-        const updatedSpot = {
-          spotName,
-          countryName,
-          shortDescription,
-          location,
-          averageCost,
-          travelTime,
-          visitors,
-          photo,
-          seasonality,
-       
-        };
-    
-        console.log(updatedSpot);
-    
-        fetch(`http://localhost:5000/touristSpots/${_id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updatedSpot),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data) {
-              Swal.fire({
-                position: "top",
-                icon: "success",
-                title: "Spot Updated Successfully",
-                showConfirmButton: true,
-              });
-            }
+    const spotName = form.spotName.value;
+    const countryName = form.countryName.value;
+    const shortDescription = form.shortDescription.value;
+    const location = form.location.value;
+    const averageCost = form.averageCost.value;
+    const travelTime = form.travelTime.value;
+    const visitors = form.visitors.value;
+    const photo = form.photo.value;
+    const seasonality = form.seasonality.value;
+
+    const updatedSpot = {
+      spotName,
+      countryName,
+      shortDescription,
+      location,
+      averageCost,
+      travelTime,
+      visitors,
+      photo,
+      seasonality,
+    };
+
+    console.log(updatedSpot);
+
+    fetch(`https://tourist-server-one.vercel.app/touristSpots/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedSpot),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Spot Updated Successfully",
+            showConfirmButton: true,
           });
-        form.reset();
-      };
+        }
+      });
+    form.reset();
+  };
 
-   
-//  const visitorsNum = Number(visitors);
-    return (
-        <div className="max-w-2xl mb-6 mx-auto">
-            <form onSubmit={handleUpdateSpot}>
+  //  const visitorsNum = Number(visitors);
+  return (
+    <div className="max-w-2xl mb-6 mx-auto">
+      <form onSubmit={handleUpdateSpot}>
         {/* from name and quantity row */}
         <div className="md:flex gap-4 mb-4">
           <div className="md:w-1/2">
@@ -159,8 +163,8 @@ if (!newSpots) {
               placeholder="Visitors Per Year"
               className="input input-bordered w-full"
               name="visitors"
-            //   defaultValue={isNaN(visitorsNum) ? "" : visitorsNum}
-            defaultValue={visitors}
+              //   defaultValue={isNaN(visitorsNum) ? "" : visitorsNum}
+              defaultValue={visitors}
               id=""
             />
           </div>
@@ -179,7 +183,6 @@ if (!newSpots) {
           </div>
         </div>
 
-    
         {/* from photo url row */}
         <div className=" mb-4">
           <div className=" w-full">
@@ -202,8 +205,8 @@ if (!newSpots) {
           className="btn btn-block bg-red-500"
         />
       </form>
-        </div>
-    );
+    </div>
+  );
 };
 // UpdateSpot.propTypes = {
 //     newSpots: PropTypes.shape({
@@ -212,7 +215,7 @@ if (!newSpots) {
 //       location: PropTypes.string,
 //       averageCost: PropTypes.string,
 //       travelTime: PropTypes.string,
-//       visitors: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), 
+//       visitors: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 //       photo: PropTypes.string,
 //       seasonality: PropTypes.string,
 //     }).isRequired,

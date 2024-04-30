@@ -7,7 +7,7 @@ const CountryCard = ({ country }) => {
 
   
   return (
-    <Link to={`/specificCountry/${countryName}`}>
+    <Link className="max-w-6xl mx-auto pl-14 lg:pl-2" to={`/specificCountry/${countryName}`}>
       <div className="card h-full bg-base-100  shadow-xl">
         <figure className="px-10 pt-10">
           <img src={photo} alt="Shoes" className="rounded-xl" />

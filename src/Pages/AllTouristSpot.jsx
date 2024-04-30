@@ -21,8 +21,8 @@ const AllTouristSpot = () => {
   const sortedTouristSpots = [...allTouristSpot].sort(sortByAverageCost); 
 
   return (
-    <div className='mb-6'>
-      <h2 className="text-5xl text-center font-bold">All Tourist Spots</h2>
+    <div className='max-w-6xl mx-auto pl-14 px-4'>
+      <h2 className="text-2xl lg:text-5xl text-center font-bold">All Tourist Spots</h2>
 
     
       <div className="text-center mt-4 ">

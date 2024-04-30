@@ -13,8 +13,6 @@ import UpdateSpot from "../Pages/UpdateSpot";
 import CountriesCard from "../Pages/CountriesCard";
 // import CountryCard from "../Pages/CountryCard";
 
-
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -24,9 +22,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        loader: () =>
+          fetch("https://tourist-server-one.vercel.app/touristSpots"),
       },
-      
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -38,34 +37,54 @@ const routes = createBrowserRouter([
       {
         path: "/allTouristSpot",
         element: <AllTouristSpot></AllTouristSpot>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        loader: () =>
+          fetch("https://tourist-server-one.vercel.app/touristSpots"),
       },
       {
         path: "/addTouristSpot",
-        element:   <PrivateRoute><AddTouristSpot></AddTouristSpot> </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddTouristSpot></AddTouristSpot>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myList",
-        element:  <PrivateRoute> <MyList></MyList> </PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyList></MyList>{" "}
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://tourist-server-one.vercel.app/touristSpots"),
       },
       {
         path: "/spotDetails/:id",
         element: <SpotDetails></SpotDetails>,
-        loader: () => fetch("http://localhost:5000/touristSpots"),
+        loader: () =>
+          fetch("https://tourist-server-one.vercel.app/touristSpots"),
       },
       {
         path: "/updateSpot/:id",
-        element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/touristSpots/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <UpdateSpot></UpdateSpot>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://tourist-server-one.vercel.app/touristSpots/${params.id}`
+          ),
       },
       {
-        path: '/countryCard/:specifyCountry',
+        path: "/countryCard/:specifyCountry",
         element: <CountriesCard></CountriesCard>,
-        loader: ({params}) => fetch(`http://localhost:5000/touristSpots/${params.specifyCountry}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://tourist-server-one.vercel.app/touristSpots/${params.specifyCountry}`
+          ),
       },
-
-     
     ],
   },
 ]);

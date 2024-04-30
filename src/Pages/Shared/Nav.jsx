@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
-import logo from '../../assets/logo.jpeg'
+import logo from '../../assets/logo.jpeg';
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Theme state and handler
   const [theme, setTheme] = useState("light");
@@ -20,76 +20,63 @@ const Nav = () => {
 
   const handleSignOut = () => {
     logOut()
-    .then(() => {
-      navigate("/");
-    })
-    
-    .catch();
+      .then(() => navigate("/"))
+      .catch();
   };
 
   const navLinks = (
-  <div className='flex justify-end '>
-    
-      {/* <li className=''>
-        <NavLink to="/">Home</NavLink>
-      </li> */}
+    <ul className="flex flex-col lg:flex-row lg:items-center">
+      <li className="m-2">
+        <NavLink to="/">
+          <span id="home">Home</span>
+          <Tooltip
+            className="index"
+            anchorSelect="#home"
+            content="Home"
+          />
+        </NavLink>
+      </li>
 
-       <li>
-       <NavLink to="/">
-       <span id="home">Home</span>
-             
-                <Tooltip
-                  className="index"
-                  anchorSelect="#home"
-                  content="Home"
-                />
-         </NavLink>
-       </li>
-
-
-      <li className="ml-2">
+      <li className="m-2">
         <NavLink to="/allTouristSpot">
-        
           <span id="allSpots">All Tourist Spots</span>
           <Tooltip
-                  className="index"
-                  anchorSelect="#allSpots"
-                  content="All Tourist Spots"
-                />
+            className="index"
+            anchorSelect="#allSpots"
+            content="All Tourist Spots"
+          />
         </NavLink>
       </li>
-      <li className="ml-2">
-      <NavLink to="/addTouristSpot">
-        
+
+      <li className="m-2">
+        <NavLink to="/addTouristSpot">
           <span id="addSpots">Add Tourist Spots</span>
           <Tooltip
-                  className="index"
-                  anchorSelect="#addSpots"
-                  content="Add Tourist Spots"
-                />
+            className="index"
+            anchorSelect="#addSpots"
+            content="Add Tourist Spots"
+          />
         </NavLink>
       </li>
-      <li className="ml-2">
-      <NavLink to="/myList">
-         
+
+      <li className="m-2">
+        <NavLink to="/myList">
           <span id="myList">My List</span>
           <Tooltip
-                  className="index"
-                  anchorSelect="#myList"
-                  content="My List"
-                />
+            className="index"
+            anchorSelect="#myList"
+            content="My List"
+          />
         </NavLink>
-        
       </li>
-  </div>
-    
+    </ul>
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-6xl mx-auto mb-6">
+    <div className="navbar bg-base-100 max-w-6xl mx-auto pl-14 lg:pl-2 mb-6">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <div className="dropdown lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -107,28 +94,28 @@ const Nav = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content menu menu-sm mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
         </div>
-       <div>
-       <div className=" flex items-center text-xl md:text-2xl lg:text-3xl rounded-lg font-semibold ">
-        <div className='w-12  h-12'>
-          <img src={logo} alt="" />
+
+        <div className="flex items-center text-xl md:text-2xl lg:text-3xl rounded-lg font-semibold">
+          <div className="w-12 h-12">
+            <img src={logo} alt="Logo" />
+          </div>
+          <p className="text-violet-600">Destination Fusion</p>
         </div>
-        <p className='text-violet-600'> Destination Fusion</p>
-        </div>
-       </div>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="navbar-end flex">
-       
+
+      <div className="navbar-end flex items-center">
         {user ? (
           <div className="dropdown dropdown-hover">
-            <div tabIndex={0} role="button" className="m-1">
+            <div tabIndex={0} role="button" className="flex items-center cursor-pointer">
               <img
                 src={user.photoURL}
                 className="w-12 h-12 rounded-full"
@@ -143,7 +130,7 @@ const Nav = () => {
               <li className="mt-4">
                 <button
                   onClick={handleSignOut}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                  className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white"
                 >
                   Logout
                 </button>
@@ -158,11 +145,10 @@ const Nav = () => {
             Login
           </Link>
         )}
-         <label onClick={handleTheme} className="flex  cursor-pointer ml-6 mr-4 gap-2">
-         
-         <input type="checkbox" className="toggle theme-controller" />
-        
-       </label>
+
+        <label onClick={handleTheme} className="flex cursor-pointer ml-6 mr-4 gap-2">
+          <input type="checkbox" className="toggle theme-controller" />
+        </label>
       </div>
     </div>
   );

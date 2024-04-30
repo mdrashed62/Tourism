@@ -2,18 +2,18 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const CountriesCard = () => {
+  const newCountry = useLoaderData();
+  const [data, setData] = useState([]);
+  console.log("for new", data);
 
-    const newCountry = useLoaderData()
-    const [data, setData] = useState([]);
-    console.log('for new',data)
- 
-    const {_id, photo,spotName,visitors , countryName, shortDescription,} = newCountry;
+  const { _id, photo, spotName, visitors, countryName, shortDescription } =
+    newCountry;
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/country`)
-        .then(res => res.json())
-        .then(data => setData(data))
-    },[])
+  useEffect(() => {
+    fetch(`https://tourist-server-one.vercel.app/country`)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
 
   return (
     <div className="card  bg-base-100 shadow-xl">
@@ -29,9 +29,14 @@ const CountriesCard = () => {
           <p>{location}</p>
         </div>
 
-       <div className="w-full ">
-       <Link to={`/spotDetails/${_id}`}> <button className="btn mt-4 md:20 lg:px-24 bg-green-500">View Details</button></Link>
-       </div>
+        <div className="w-full ">
+          <Link to={`/spotDetails/${_id}`}>
+            {" "}
+            <button className="btn mt-4 md:20 lg:px-24 bg-green-500">
+              View Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

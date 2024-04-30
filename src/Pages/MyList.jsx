@@ -5,16 +5,12 @@ import Swal from "sweetalert2";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // console.log('auth user', user.email); important line
   const listData = useLoaderData();
-  const [listSpot, setListSpot] = useState(listData)
- 
-
+  const [listSpot, setListSpot] = useState(listData);
 
   const spots = listData?.filter((spot) => spot.userEmail === user?.email);
-
-
 
   const handleDelete = (id) => {
     console.log(id);
@@ -28,7 +24,7 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/touristSpots/${id}`, {
+        fetch(`https://tourist-server-one.vercel.app/touristSpots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -40,8 +36,8 @@ const MyList = () => {
                 text: "Your Spot has been deleted.",
                 icon: "success",
               });
-              const remaining = listSpot.filter(aSpot => aSpot._id !== id)
-              setListSpot(remaining)
+              const remaining = listSpot.filter((aSpot) => aSpot._id !== id);
+              setListSpot(remaining);
             }
           });
       }
@@ -49,11 +45,11 @@ const MyList = () => {
   };
 
   const handleUpdate = () => {
-    navigate('/login')
-  }
+    navigate("/login");
+  };
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto ml-7 lg:ml-0">
       <table className="table">
         <thead>
           <tr>
@@ -80,11 +76,12 @@ const MyList = () => {
               <td>{spot.countryName}</td>
               <td>
                 <Link to={`/updateSpot/${spot._id}`}>
-
-                <button onClick={handleUpdate()} className="btn btn-ghost btn-xs"  >
-                Update
-                </button>
-
+                  <button
+                    onClick={handleUpdate()}
+                    className="btn btn-ghost btn-xs"
+                  >
+                    Update
+                  </button>
                 </Link>
                 <button
                   className="btn btn-ghost btn-xs"

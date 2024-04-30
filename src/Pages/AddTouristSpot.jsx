@@ -41,7 +41,7 @@ const AddTouristSpot = () => {
 
     console.log(addSpot);
 
-    fetch("http://localhost:5000/touristSpots", {
+    fetch("https://tourist-server-one.vercel.app/touristSpots", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,7 +65,7 @@ const AddTouristSpot = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto bg-gray-300 mt-6 p-20 rounded-lg">
+    <div className="max-w-6xl mx-auto ml-7 mb-4 lg:pl-2 bg-gray-300 mt-6 p-20 rounded-lg">
       <h3 className="text-4xl font-bold text-center mb-6">Add Tourist Spot</h3>
       <form onSubmit={handleAddSpot}>
         {/* from name and quantity row */}

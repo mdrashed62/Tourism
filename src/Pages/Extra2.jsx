@@ -3,12 +3,12 @@ import review from "../assets/review.jpeg";
 
 const Extra2 = () => {
   return (
-    <div>
-    <h2 className="text-center font-bold text-5xl text-green-500 mb-6">Our Security and Reviewers</h2>
-    <div className="max-w-6xl mx-auto gap-5 flex mb-6">
+    <div className="pl-14 lg:pl-2 max-w-6xl mx-auto">
+    <h2 className="text-center font-bold text-2xl lg:text-5xl text-green-500 mb-6">Our Security and Reviewers</h2>
+    <div className=" gap-5 flex flex-col lg:flex-col mb-6">
       
       {/* Reviewers Section */}
-      <div className="flex-1 shadow-2xl p-4 rounded-lg border">
+      <div className="flex-1 shadow-2xl p-4 mb-4 rounded-lg border">
         <p className="text-4xl  text-center font-semibold mb-8">Reviewers</p>
         <div className="flex justify-center">
         <img className="rounded-lg" src={review} alt="" />

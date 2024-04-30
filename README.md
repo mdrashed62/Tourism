@@ -1,5 +1,13 @@
 # Destination Fusion
 
+Live URL ()
+
+1) used:
+* React Tooltip
+* React Simple TypeWriter
+
+# Category:  Southeast Asia
+
 1. Comprehensive Travel Guides: 
 Explore detailed guides for each Southeast Asian country, covering popular tourist spots, local customs, cuisine, and travel tips to help you plan the perfect trip.
 
