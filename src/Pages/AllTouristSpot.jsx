@@ -36,10 +36,10 @@ const AllTouristSpot = () => {
           >
           
             <li>
-              <a onClick={() => setSortOrder('asc')}>Ascending</a> 
+              <a onClick={() => setSortOrder('asc')}>High Cost</a> 
             </li>
             <li>
-              <a onClick={() => setSortOrder('desc')}>Descending</a> 
+              <a onClick={() => setSortOrder('desc')}>Low Cost</a> 
             </li>
           </ul>
         </div>

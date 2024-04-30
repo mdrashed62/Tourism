@@ -10,7 +10,10 @@ import PrivateRoute from "../Components/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
 import SpotDetails from "../Pages/SpotDetails";
 import UpdateSpot from "../Pages/UpdateSpot";
-// import SecondHome from "../Pages/NewCollection/SecondHome";
+import CountriesCard from "../Pages/CountriesCard";
+// import CountryCard from "../Pages/CountryCard";
+
+
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +59,13 @@ const routes = createBrowserRouter([
         element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/touristSpots/${params.id}`)
       },
+      {
+        path: '/countryCard/:specifyCountry',
+        element: <CountriesCard></CountriesCard>,
+        loader: ({params}) => fetch(`http://localhost:5000/touristSpots/${params.specifyCountry}`)
+      },
+
+     
     ],
   },
 ]);

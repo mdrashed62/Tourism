@@ -1,17 +1,19 @@
 import { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
   // console.log('auth user', user.email); important line
   const listData = useLoaderData();
   const [listSpot, setListSpot] = useState(listData)
+ 
 
 
   const spots = listData?.filter((spot) => spot.userEmail === user?.email);
-  console.log(spots);
+
 
 
   const handleDelete = (id) => {
@@ -46,7 +48,9 @@ const MyList = () => {
     });
   };
 
-  
+  const handleUpdate = () => {
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -77,7 +81,7 @@ const MyList = () => {
               <td>
                 <Link to={`/updateSpot/${spot._id}`}>
 
-                <button className="btn btn-ghost btn-xs"  >
+                <button onClick={handleUpdate()} className="btn btn-ghost btn-xs"  >
                 Update
                 </button>
 

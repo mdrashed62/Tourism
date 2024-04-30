@@ -86,12 +86,12 @@ const AddTouristSpot = () => {
             <span className="label-text">Country Name</span>
             <select className="input input-bordered w-full" name="countryName">
               <option value="">Select a Country</option>
-              <option value="USA">Bangladesh</option>
-              <option value="Canada">Thailand</option>
-              <option value="Mexico">Indonesia</option>
-              <option value="UK">Malaysia</option>
-              <option value="France">Vietnam</option>
-              <option value="Germany">Cambodia</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Malaysia">Malaysia</option>
+              <option value="Vietnam">Vietnam</option>
+              <option value="Cambodia">Cambodia</option>
             </select>
           </div>
         </div>

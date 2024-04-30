@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import CountryCard from "../CountryCard";
 import Extra1 from "../Extra1";
 import Extra2 from "../Extra2";
-
+import { Typewriter } from 'react-simple-typewriter'
 
 
 const Home = () => {
@@ -33,6 +33,8 @@ const Home = () => {
     fetchData();
   }, []);
 
+
+ 
 
   return (
     <div>
@@ -68,13 +70,24 @@ const Home = () => {
 
           <div className="text-center">
             <h3
-              data-aos="fade-up"
-              data-aos-duration="2000"
               className="text-2xl md:text-4xl lg:text-6xl font-bold mt-8 mb-4"
             >
-              Explore Our Collection <br /> of beautiful Tourist Spot
+              Explore Our Collection <br /> of--  
+              <span style={{ color: 'red', fontWeight: 'bold' }}>
+          {/* Style will be inherited from the parent element */}
+          <Typewriter
+            words={['beautiful', 'Tourist', 'Spots']}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1500}
+           
+          />
+        </span>
             </h3>
-            <p data-aos="fade-up" data-aos-duration="3000">
+            <p>
             Embark on a journey through our extensive collection of breathtaking tourist spots. From serene beaches to majestic mountains, <br />  we offer a diverse selection of destinations to satisfy every travelers wanderlust. Discover the beauty <br />  of the world  and create unforgettable memories at each unique location
             </p>
           </div>

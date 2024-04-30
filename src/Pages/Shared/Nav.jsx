@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import logo from '../../assets/logo.jpeg'
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -28,27 +30,63 @@ const Nav = () => {
   const navLinks = (
   <div className='flex justify-end '>
     
-    <li className=''>
+      {/* <li className=''>
         <NavLink to="/">Home</NavLink>
+      </li> */}
+
+       <li>
+       <NavLink to="/">
+       <span id="home">Home</span>
+             
+                <Tooltip
+                  className="index"
+                  anchorSelect="#home"
+                  content="Home"
+                />
+         </NavLink>
+       </li>
+
+
+      <li className="ml-2">
+        <NavLink to="/allTouristSpot">
+        
+          <span id="allSpots">All Tourist Spots</span>
+          <Tooltip
+                  className="index"
+                  anchorSelect="#allSpots"
+                  content="All Tourist Spots"
+                />
+        </NavLink>
       </li>
       <li className="ml-2">
-        <NavLink to="/allTouristSpot">All Tourist Spots</NavLink>
+      <NavLink to="/addTouristSpot">
+        
+          <span id="addSpots">Add Tourist Spots</span>
+          <Tooltip
+                  className="index"
+                  anchorSelect="#addSpots"
+                  content="Add Tourist Spots"
+                />
+        </NavLink>
       </li>
       <li className="ml-2">
-        <NavLink to="/addTouristSpot">Add Tourists Spot</NavLink>
-      </li>
-      <li className="ml-2">
-        <NavLink to="/myList">My List</NavLink>
-      </li>
-      <li className="ml-2">
-        <NavLink to="/updateSpot">Update Spot</NavLink>
+      <NavLink to="/myList">
+         
+          <span id="myList">My List</span>
+          <Tooltip
+                  className="index"
+                  anchorSelect="#myList"
+                  content="My List"
+                />
+        </NavLink>
+        
       </li>
   </div>
     
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-7xl mx-auto mb-6">
+    <div className="navbar bg-base-100 max-w-6xl mx-auto mb-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
