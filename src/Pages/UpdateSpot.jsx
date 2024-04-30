@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 
 const UpdateSpot = () => {
   const newSpots = useLoaderData();
-  console.log("why", newSpots);
   if (!newSpots) {
     return <div>Loading...</div>;
   }

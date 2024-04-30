@@ -11,7 +11,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import SpotDetails from "../Pages/SpotDetails";
 import UpdateSpot from "../Pages/UpdateSpot";
 import CountriesCard from "../Pages/CountriesCard";
-// import CountryCard from "../Pages/CountryCard";
+
+
 
 const routes = createBrowserRouter([
   {
@@ -82,9 +83,10 @@ const routes = createBrowserRouter([
         element: <CountriesCard></CountriesCard>,
         loader: ({ params }) =>
           fetch(
-            `https://tourist-server-one.vercel.app/touristSpots/${params.specifyCountry}`
+            `https://tourist-server-one.vercel.app/country/${params.specifyCountry}`
           ),
       },
+      
     ],
   },
 ]);

@@ -9,7 +9,7 @@ const Extra2 = () => {
       
       {/* Reviewers Section */}
       <div className="flex-1 shadow-2xl p-4 mb-4 rounded-lg border">
-        <p className="text-4xl  text-center font-semibold mb-8">Reviewers</p>
+        <p className="text-4xl  text-center font-semibold mb-8">Reviewer</p>
         <div className="flex justify-center">
         <img className="rounded-lg" src={review} alt="" />
         </div>

@@ -1,19 +1,17 @@
 import { useContext, useState } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
   // console.log('auth user', user.email); important line
   const listData = useLoaderData();
   const [listSpot, setListSpot] = useState(listData)
- 
 
 
   const spots = listData?.filter((spot) => spot.userEmail === user?.email);
-
+  console.log(spots);
 
 
   const handleDelete = (id) => {
@@ -28,7 +26,7 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://tourist-server-one.vercel.app/touristSpots/${id}`, {
+        fetch(`http://localhost:5000/touristSpots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -48,12 +46,10 @@ const MyList = () => {
     });
   };
 
-  const handleUpdate = () => {
-    navigate('/login')
-  }
+  
 
   return (
-    <div className="max-w-6xl mx-auto ml-7 lg:ml-0">
+    <div>
       <table className="table">
         <thead>
           <tr>
@@ -81,7 +77,7 @@ const MyList = () => {
               <td>
                 <Link to={`/updateSpot/${spot._id}`}>
 
-                <button onClick={handleUpdate()} className="btn btn-ghost btn-xs"  >
+                <button className="btn btn-ghost btn-xs"  >
                 Update
                 </button>
 
