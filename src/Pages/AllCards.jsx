@@ -5,7 +5,7 @@ const AllCards = ({touristSpot}) => {
    
     const { spotName, shortDescription, location, averageCost, travelTime, visitors, photo, seasonality, _id } = touristSpot;
 
-
+    const visitorsNum = Number(visitors);
     return (
         <div className="card  bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
@@ -17,7 +17,10 @@ const AllCards = ({touristSpot}) => {
         <p>{shortDescription}</p>
         <div className="flex gap-6 font-semibold">
           <div className="flex w-full justify-around">
-          <p>Visitors/Year: {visitors}</p>
+          <p>
+              Visitors/Year: {isNaN(visitorsNum) ? "Unknown" : visitorsNum} 
+              
+            </p>
           <p>{location}</p>
           </div>
          
@@ -37,7 +40,7 @@ AllCards.propTypes = {
       spotName: PropTypes.string.isRequired,
       shortDescription: PropTypes.string, 
       location: PropTypes.string.isRequired,
-      visitors: PropTypes.number,
+      visitors: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       photo: PropTypes.string.isRequired,
       _id: PropTypes.string.isRequired,
       averageCost: PropTypes.string.isRequired,

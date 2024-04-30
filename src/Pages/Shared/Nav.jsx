@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import logo from '../../assets/logo.jpeg'
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,14 +26,15 @@ const Nav = () => {
   };
 
   const navLinks = (
-    <>
-      <li className=''>
+  <div className='flex justify-end '>
+    
+    <li className=''>
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="ml-2">
         <NavLink to="/allTouristSpot">All Tourist Spots</NavLink>
       </li>
-      <li className=" ml-2">
+      <li className="ml-2">
         <NavLink to="/addTouristSpot">Add Tourists Spot</NavLink>
       </li>
       <li className="ml-2">
@@ -41,11 +43,12 @@ const Nav = () => {
       <li className="ml-2">
         <NavLink to="/updateSpot">Update Spot</NavLink>
       </li>
-    </>
+  </div>
+    
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-6xl mx-auto mb-6">
+    <div className="navbar bg-base-100 max-w-7xl mx-auto mb-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,9 +74,14 @@ const Nav = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="p-1 text-xl md:text-2xl lg:text-3xl rounded-lg font-semibold ">
-          Destination Fusion
-        </a>
+       <div>
+       <div className=" flex items-center text-xl md:text-2xl lg:text-3xl rounded-lg font-semibold ">
+        <div className='w-12  h-12'>
+          <img src={logo} alt="" />
+        </div>
+        <p className='text-violet-600'> Destination Fusion</p>
+        </div>
+       </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>

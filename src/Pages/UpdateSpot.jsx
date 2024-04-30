@@ -1,10 +1,21 @@
+
+// import PropTypes from "prop-types";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateSpot = () => {
+const newSpots = useLoaderData();
+console.log('why', newSpots)
+if (!newSpots) {
+    return <div>Loading...</div>; 
+  }
 
 
-    const handleAddSpot = (e) => {
+  const  {_id, spotName, countryName,shortDescription,location,averageCost,travelTime,
+    photo, seasonality, visitors} = newSpots;
+
+    const handleUpdateSpot = (e) => {
         e.preventDefault();
         const form = e.target;
     
@@ -15,13 +26,11 @@ const UpdateSpot = () => {
         const averageCost = form.averageCost.value;
         const travelTime = form.travelTime.value;
         const visitors = form.visitors.value;
-        const userName = form.userName.value;
         const photo = form.photo.value;
-        const email = form.email.value;
         const seasonality = form.seasonality.value;
-        // const userEmail = user?.email;
+      
     
-        const addSpot = {
+        const updatedSpot = {
           spotName,
           countryName,
           shortDescription,
@@ -29,25 +38,20 @@ const UpdateSpot = () => {
           averageCost,
           travelTime,
           visitors,
-          userName,
           photo,
-          email,
           seasonality,
-        //   userEmail
+       
         };
     
-        console.log(addSpot);
+        console.log(updatedSpot);
     
-        fetch(
-          "https://tourist-server-ashy.vercel.app/touristSpots",
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(addSpot),
-          }
-        )
+        fetch(`http://localhost:5000/touristSpots/${_id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedSpot),
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -55,18 +59,19 @@ const UpdateSpot = () => {
               Swal.fire({
                 position: "top",
                 icon: "success",
-                title: "Your tourist spot has been added",
-                showConfirmButton: false,
-                timer: 2000,
+                title: "Spot Updated Successfully",
+                showConfirmButton: true,
               });
             }
           });
         form.reset();
       };
 
+   
+//  const visitorsNum = Number(visitors);
     return (
         <div className="max-w-2xl mb-6 mx-auto">
-            <form onSubmit={handleAddSpot}>
+            <form onSubmit={handleUpdateSpot}>
         {/* from name and quantity row */}
         <div className="md:flex gap-4 mb-4">
           <div className="md:w-1/2">
@@ -77,7 +82,7 @@ const UpdateSpot = () => {
               placeholder="Tourist Spot Name"
               className="input input-bordered w-full"
               name="spotName"
-              // defaultValue={spotName}
+              defaultValue={spotName}
               id=""
             />
           </div>
@@ -88,7 +93,7 @@ const UpdateSpot = () => {
               placeholder="Country Name"
               className="input input-bordered w-full"
               name="countryName"
-              // defaultValue={}
+              defaultValue={countryName}
               id=""
             />
           </div>
@@ -103,7 +108,7 @@ const UpdateSpot = () => {
               placeholder="Short Description"
               className="input input-bordered w-full"
               name="shortDescription"
-              // defaultValue={}
+              defaultValue={shortDescription}
               id=""
             />
           </div>
@@ -115,7 +120,7 @@ const UpdateSpot = () => {
               placeholder="location"
               className="input input-bordered w-full"
               name="location"
-              // defaultValue={}
+              defaultValue={location}
               id=""
             />
           </div>
@@ -129,7 +134,7 @@ const UpdateSpot = () => {
               placeholder="Average Cost"
               className="input input-bordered w-full"
               name="averageCost"
-              // defaultValue={}
+              defaultValue={averageCost}
               id=""
             />
           </div>
@@ -140,7 +145,7 @@ const UpdateSpot = () => {
               placeholder="Travel Time"
               className="input input-bordered w-full"
               name="travelTime"
-              // defaultValue={}
+              defaultValue={travelTime}
               id=""
             />
           </div>
@@ -154,7 +159,8 @@ const UpdateSpot = () => {
               placeholder="Visitors Per Year"
               className="input input-bordered w-full"
               name="visitors"
-              // defaultValue={}
+            //   defaultValue={isNaN(visitorsNum) ? "" : visitorsNum}
+            defaultValue={visitors}
               id=""
             />
           </div>
@@ -167,7 +173,7 @@ const UpdateSpot = () => {
               placeholder="seasonality"
               className="input input-bordered w-full"
               name="seasonality"
-              // defaultValue={}
+              defaultValue={seasonality}
               id=""
             />
           </div>
@@ -184,7 +190,7 @@ const UpdateSpot = () => {
               placeholder="Photo Url"
               className="input input-bordered w-full"
               name="photo"
-              // defaultValue={}
+              defaultValue={photo}
               id=""
             />
           </div>
@@ -199,5 +205,16 @@ const UpdateSpot = () => {
         </div>
     );
 };
-
+// UpdateSpot.propTypes = {
+//     newSpots: PropTypes.shape({
+//       spotName: PropTypes.string.isRequired,
+//       shortDescription: PropTypes.string,
+//       location: PropTypes.string,
+//       averageCost: PropTypes.string,
+//       travelTime: PropTypes.string,
+//       visitors: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), 
+//       photo: PropTypes.string,
+//       seasonality: PropTypes.string,
+//     }).isRequired,
+//   }
 export default UpdateSpot;

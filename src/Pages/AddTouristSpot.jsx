@@ -41,7 +41,7 @@ const AddTouristSpot = () => {
 
     console.log(addSpot);
 
-    fetch("https://tourist-server-ashy.vercel.app/touristSpots", {
+    fetch("http://localhost:5000/touristSpots", {
       method: "POST",
       headers: {
         "content-type": "application/json",

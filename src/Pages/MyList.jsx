@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,7 @@ const MyList = () => {
   const { user } = useContext(AuthContext);
   // console.log('auth user', user.email); important line
   const listData = useLoaderData();
+  const [listSpot, setListSpot] = useState(listData)
 
 
   const spots = listData?.filter((spot) => spot.userEmail === user?.email);
@@ -25,7 +26,7 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://tourist-server-ashy.vercel.app/touristSpots/${id}`, {
+        fetch(`http://localhost:5000/touristSpots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -37,13 +38,15 @@ const MyList = () => {
                 text: "Your Spot has been deleted.",
                 icon: "success",
               });
+              const remaining = listSpot.filter(aSpot => aSpot._id !== id)
+              setListSpot(remaining)
             }
           });
       }
     });
   };
 
-  const handleUpdate = () => {};
+  
 
   return (
     <div>
@@ -72,12 +75,13 @@ const MyList = () => {
               <td>{spot.spotName}</td>
               <td>{spot.countryName}</td>
               <td>
-                <button
-                  className="btn btn-ghost btn-xs"
-                  onClick={() => handleUpdate(spot._id)}
-                >
-                  Update
+                <Link to={`/updateSpot/${spot._id}`}>
+
+                <button className="btn btn-ghost btn-xs"  >
+                Update
                 </button>
+
+                </Link>
                 <button
                   className="btn btn-ghost btn-xs"
                   onClick={() => handleDelete(spot._id)}

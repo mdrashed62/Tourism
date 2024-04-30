@@ -21,13 +21,9 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("http://localhost:5000/touristSpots"),
       },
-      // {
-      //   path:'/secondHome',
-      //   element: <SecondHome></SecondHome>,
-      //   loader: () => fetch("http://localhost:5000/countryData")
-      // },
+      
       {
         path: "/login",
         element: <Login></Login>,
@@ -39,37 +35,26 @@ const routes = createBrowserRouter([
       {
         path: "/allTouristSpot",
         element: <AllTouristSpot></AllTouristSpot>,
-        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("http://localhost:5000/touristSpots"),
       },
       {
         path: "/addTouristSpot",
-        element: (
-          <PrivateRoute>
-            <AddTouristSpot></AddTouristSpot>
-          </PrivateRoute>
-        ),
+        element:   <PrivateRoute><AddTouristSpot></AddTouristSpot> </PrivateRoute>
       },
       {
         path: "/myList",
-        element: (
-          <PrivateRoute>
-            <MyList></MyList>
-          </PrivateRoute>
-        ),
-        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        element:  <PrivateRoute> <MyList></MyList> </PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/touristSpots"),
       },
       {
         path: "/spotDetails/:id",
         element: <SpotDetails></SpotDetails>,
-        loader: () => fetch("https://tourist-server-ashy.vercel.app/touristSpots"),
+        loader: () => fetch("http://localhost:5000/touristSpots"),
       },
       {
-        path: "/updateSpot",
-        element: (
-          <PrivateRoute>
-            <UpdateSpot></UpdateSpot>
-          </PrivateRoute>
-        ),
+        path: "/updateSpot/:id",
+        element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/touristSpots/${params.id}`)
       },
     ],
   },
