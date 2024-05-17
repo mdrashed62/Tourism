@@ -2,7 +2,7 @@
 const Extra1 = () => {
     return (
        
-            <div className="max-w-6xl mx-auto ml-14 lg:pl-2 bg-slate-300 p-8 mb-6 rounded-lg">
+            <div className="lg:pl-2 bg-slate-300 p-8 mb-6 rounded-lg">
             <h2 className="text-3xl lg:text-5xl  text-blue-500 mb-4 font-semibold text-center">Cultural Festivals and Traditions</h2>
             <div>
               <ul>

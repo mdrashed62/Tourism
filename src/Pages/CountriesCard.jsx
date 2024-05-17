@@ -12,8 +12,8 @@ const CountriesCard = () => {
 
   useEffect(() => {
     fetch(`https://tourist-server-one.vercel.app/country/${countryName}`)
-      .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((res) => res.json()).then((data) => setData(data));
+      
      
   }, []);
   console.log(data)

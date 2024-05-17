@@ -3,7 +3,7 @@ import review from "../assets/review.jpeg";
 
 const Extra2 = () => {
   return (
-    <div className="pl-14 lg:pl-2 max-w-6xl mx-auto">
+    <div className=" lg:pl-2">
     <h2 className="text-center font-bold text-2xl lg:text-5xl text-green-500 mb-6">Our Security and Reviewers</h2>
     <div className=" gap-5 flex flex-col lg:flex-col mb-6">
       
