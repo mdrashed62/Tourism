@@ -12,22 +12,18 @@ Awesome Components.
 # Features
 
 1. Comprehensive Travel Guides: 
-Explore detailed guides for each Southeast Asian country, covering popular tourist spots, local customs, cuisine, and travel tips to help you plan the perfect trip.
+Detailed guides covering Southeast Asian countries, highlighting tourist spots, local customs, and cuisine.
 
 2. Interactive Maps and Itineraries: 
-Find interactive maps to visualize your journey and customized itineraries that suit your interests, whether you're a beach lover, a history buff, or an adventure seeker.
+Visualize journeys with interactive maps and personalized itineraries.
 
-3. Destination Highlights: Detailed information and stunning photos of top destinations around the world.
-
-4. Traveler Stories and Reviews: 
-Read personal stories and reviews from fellow travelers who have explored the region, sharing their experiences, recommendations, and hidden gems.
-
-5. Travel Resources and Services: 
-Access a variety of travel resources, including visa information, transportation options, accommodation guides, and safety tips to ensure a smooth and enjoyable trip.
+3.Explore top global destinations with detailed information and stunning photos.
 
 # Project Clone and Local Run Instructions  
-To clone and run a project locally, begin by accessing the project's GitHub repository and locating the clone URL. Using Git in your terminal or command prompt, execute the git clone command followed by the repository URL to download the project files to your local machine. Once the cloning process is complete, navigate into the project directory using the cd command.
+1) Clone the repository: https://github.com/mdrashed62/Tourism.git
+2) Navigate to the Project Directory: cd project-repo
+3) Install Dependencies: npm install
+4) Set Up Environment Variables: Create a .env file in the root directory.
+5) Start the Development Server: nodemon index.js
+6) Access the Project: Open your web browser and navigate to `http://localhost:5000`
 
-Before running the project, ensure all necessary dependencies are installed. This typically involves using package managers like npm (Node Package Manager) or yarn. Check the project's README file for specific instructions on installing dependencies. Additionally, review any .env files provided to set up environment variables such as API keys or database connection strings.
-
-After configuring dependencies and environment variables, start the project by running the appropriate command in your terminal. Common commands include npm start or yarn start to launch a development server. Once the server is running, open your web browser and enter the local host address specified in the project's documentation (often http://localhost:5000).
