@@ -2,9 +2,9 @@
 
 Live URL (https://tourism-client-firebase.web.app)
 
-1) used:
-* React Tooltip
-* React Simple TypeWriter
+Technology Used:
+React js, Javascript, Node js, MongoDB, Express js, React Router, Firebase, Vercel, Tailwind, Daisy-Ui, React
+Awesome Components.
 
 # Category:  Southeast Asia
 
