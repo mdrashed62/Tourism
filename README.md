@@ -1,7 +1,7 @@
 # Destination Fusion
 
-Live URL (https://tourism-client-firebase.web.app)
-Project Overview:   
+Live URL (https://tourism-client-firebase.web.app)   
+Project Overview:    
 Destination Fusion aims to provide a comprehensive platform for travelers to explore, plan, and share their travel experiences. Our goal is to make travel planning easy, enjoyable, and inspiring by offering a one-stop solution for discovering beautiful destinations around the world.
 
 Technology Used:  
