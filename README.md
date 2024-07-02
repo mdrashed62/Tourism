@@ -2,8 +2,7 @@
 
 Live URL (https://tourism-client-firebase.web.app)
 
-Technology Used:
-
+Technology Used:  
 React js, Javascript, Node js, MongoDB, Express js, React Router, Firebase, Vercel, Tailwind, Daisy-Ui, React
 Awesome Components.
 
