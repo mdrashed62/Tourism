@@ -14,8 +14,8 @@ Awesome Components.
 1. Comprehensive Travel Guides: 
    Detailed guides covering Southeast Asian countries, highlighting tourist spots, local customs, and cuisine.
 2. Interactive Maps and Itineraries: 
-   Visualize journeys with interactive maps and personalized itineraries.  
-3.Explore top global destinations with detailed information and stunning photos.
+   Visualize journeys with interactive maps and personalized itineraries.
+3. Explore top global destinations with detailed information and stunning photos.
 
 # Project Clone and Local Run Instructions  
 1) Clone the repository: https://github.com/mdrashed62/Tourism.git
